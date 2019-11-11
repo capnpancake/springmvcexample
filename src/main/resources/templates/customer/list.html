@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Spring Core Online Tutorial</title>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.4.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.4.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen">
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.4.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <link href="../static/css/spring-core.css"
+          th:href="@{css/spring-core.css}" rel="stylesheet" media="screen">
+</head>
+<body>
+    <div class="container">
+        <h2 class="jumbotron">Show Customers</h2>
+        <div th:if="${not #lists.isEmpty(customers)}">
+            <table class="table table-striped">
+                <tr>
+                    <th>ID</th>
+                    <th>First Name</th>
+                    <th>Last Name</th>
+                    <th>Email</th>
+                    <th>Address Line 1</th>
+                    <th>Address Line 2</th>
+                    <th>City</th>
+                    <th>State</th>
+                    <th>Zip</th>
+                    <th>Details</th>
+                    <th>Edit</th>
+                    <th>Delete</th>
+                </tr>
+                <tr th:each="customer : ${customers}">
+                    <td th:text="${customer.id}">ID</td>
+                    <td th:text="${customer.fname}">First Name</td>
+                    <td th:text="${customer.lname}">Last Name</td>
+                    <td th:text="${customer.email}">Email</td>
+                    <td th:text="${customer.address1}">Address No. 1</td>
+                    <td th:text="${customer.address2}">Address No. 2</td>
+                    <td th:text="${customer.city}">City</td>
+                    <td th:text="${customer.state}">State</td>
+                    <td th:text="${customer.zip}">Zip Code</td>
+                    <td><a th:href="${'/customer/show/' + customer.id}" class="btn btn-default">View</a></td>
+                    <td><a th:href="${'/customer/edit/' + customer.id}" class="btn btn-default">Edit</a></td>
+                    <td><a th:href="${'/customer/delete/' + customer.id}" class="btn btn-default">Delete</a></td>
+                </tr>
+            </table>
+        </div>
+        <a href="/customer/new" class="btn btn-primary">New Customer</a>
+    </div>
+</body>
+</html>

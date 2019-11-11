@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head lang="en">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Customer Details</title>
+
+    <link href="http://cdn.jsdelivr.net/webjars/bootstrap/3.4.0/css/bootstrap.min.css"
+          th:href="@{/webjars/bootstrap/3.4.0/css/bootstrap.min.css}"
+          rel="stylesheet" media="screen">
+    <script src="http://cdn.jsdelivr.net/webjars/jquery/3.4.1/jquery.min.js"
+            th:src="@{/webjars/jquery/3.4.1/jquery.min.js}"></script>
+    <link href="../static/css/spring-core.css"
+          th:href="@{css/spring-core.css}" rel="stylesheet" media="screen">
+</head>
+<body>
+    <div th:object="${customer}" class="container">
+        <header class="row">
+            <h2 class="col-sm-6" th:text="*{fname} + ' ' + *{lname}">Customer Name</h2>
+        </header>
+        <main class="row">
+            <form class="form-horizontal">
+                <section class="form-group">
+                    <label class="col-sm-4 control-label">Email:</label>
+                    <p class="col-sm-8 form-control-static" th:text="*{email}">Customer Email</p>
+                </section>
+                <section class="form-group">
+                    <label class="col-sm-4 control-label">Address:</label>
+                    <p class="col-sm-8 form-control-static" th:text="*{address1}">Address Line 1</p>
+                </section>
+                <section class="form-group">
+                    <label class="col-sm-4 control-label"></label>
+                    <p class="col-sm-8" th:text="*{address2}">Address Line 2</p>
+                </section>
+                <section class="form-group">
+                    <label class="col-sm-4 control-label"></label>
+                    <p class="col-sm-8 form-control-static" th:text="*{city} + ', ' + *{state} + ' ' + *{zip}">City, State Zip</p>
+                </section>
+            </form>
+            <a href="/customer/list" class="btn btn-primary">View Customers</a>
+        </main>
+    </div>
+</body>
+</html>
