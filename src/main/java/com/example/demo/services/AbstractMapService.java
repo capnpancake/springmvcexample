@@ -9,7 +9,6 @@ public abstract class AbstractMapService {
 
     public AbstractMapService(){
         domainMap = new HashMap<>();
-        loadDomainObjects();
     }
 
     public List<DomainObject> listAll() { return new ArrayList<>(domainMap.values()); }
@@ -24,7 +23,7 @@ public abstract class AbstractMapService {
             domainMap.put(domainObject.getId(), domainObject);
 
             return domainObject;
-        } else { throw new RuntimeException("Object canno be null!"); }
+        } else { throw new RuntimeException("Object cannot be null!"); }
     }
 
     public void delete(Integer id) { domainMap.remove(id); }
@@ -34,5 +33,4 @@ public abstract class AbstractMapService {
         return Collections.max(domainMap.keySet()) + 1;
     }
 
-    protected abstract void loadDomainObjects();
 }
