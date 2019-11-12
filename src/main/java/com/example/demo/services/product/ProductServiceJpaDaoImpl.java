@@ -1,7 +1,6 @@
 package com.example.demo.services.product;
 
 import com.example.demo.model.Product;
-import com.example.demo.services.product.ProductService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
@@ -20,13 +19,17 @@ public class ProductServiceJpaDaoImpl implements ProductService {
     @Override
     public List<Product> listAll() {
         EntityManager em = emf.createEntityManager();
-        return em.createQuery("from Product", Product.class).getResultList();
+        List<Product> products = em.createQuery("from Product", Product.class).getResultList();
+        em.close();
+        return products;
     }
 
     @Override
     public Product getById(Integer id) {
         EntityManager em = emf.createEntityManager();
-        return em.find(Product.class, id);
+        Product product = em.find(Product.class, id);
+        em.close();
+        return product;
     }
 
     @Override
@@ -36,6 +39,7 @@ public class ProductServiceJpaDaoImpl implements ProductService {
         em.getTransaction().begin();
         Product savedProduct = em.merge(domainObject);
         em.getTransaction().commit();
+        em.close();
 
         return savedProduct;
     }
@@ -47,5 +51,6 @@ public class ProductServiceJpaDaoImpl implements ProductService {
         em.getTransaction().begin();
         em.remove(em.find(Product.class, id));
         em.getTransaction().commit();
+        em.close();
     }
 }

@@ -2,12 +2,8 @@ package com.example.demo.services.product;
 
 import com.example.demo.model.Product;
 import com.example.demo.services.AbstractMapService;
-import com.example.demo.services.product.ProductService;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
-
-import java.math.BigDecimal;
-import java.util.*;
 
 @Service
 @Profile("map")
