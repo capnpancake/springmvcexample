@@ -1,7 +1,7 @@
 package com.example.demo.controllers;
 
 import com.example.demo.model.Customer;
-import com.example.demo.services.CustomerService;
+import com.example.demo.services.customer.CustomerService;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.ArgumentCaptor;
