@@ -1,7 +1,17 @@
 package com.example.demo.model;
 
+import javax.persistence.*;
+
+@Entity
 public class Customer implements DomainObject{
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    @Version
+    private Integer version;
+
     private String fname;
     private String lname;
     private String email;
@@ -12,13 +22,19 @@ public class Customer implements DomainObject{
     private String zip;
 
     @Override
-    public Integer getId() {
-        return id;
-    }
+    public Integer getId() { return id; }
 
     @Override
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public Integer getVersion() {
+        return version;
+    }
+
+    public void setVersion(Integer version) {
+        this.version = version;
     }
 
     public String getFname() {

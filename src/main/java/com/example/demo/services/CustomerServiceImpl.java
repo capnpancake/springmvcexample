@@ -1,11 +1,13 @@
 package com.example.demo.services;
 
 import com.example.demo.model.Customer;
+import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 import java.util.*;
 
 @Service
+@Profile("map")
 public class CustomerServiceImpl extends AbstractMapService implements CustomerService{
 
     // inherits domainMap, listAll(), and delete()
